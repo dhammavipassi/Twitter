@@ -4,13 +4,13 @@ import { Tweet, TweetSkeleton, EmbeddedTweet, TweetNotFound } from 'react-tweet'
 import { getTweet } from '../../../lib/tweet-cache';
 
 // Tweet 组件
-async function TweetComponent() {  // 改为函数声明式写法
+async function TweetComponent() {
   try {
-    const tweet = await getTweet("1629307668568633344")
-    return tweet ? <EmbeddedTweet tweet={tweet} /> : <TweetNotFound />
+    const tweet = await getTweet("1629307668568633344");
+    return tweet ? <EmbeddedTweet tweet={tweet} /> : <TweetNotFound />;
   } catch (error) {
-    console.error(error)
-    return <TweetNotFound error={error as Error} />
+    console.error(error);
+    return <TweetNotFound error={error as Error} />;
   }
 }
 
@@ -34,7 +34,7 @@ export default function Home() {
         </div>
 
         <div className="flex gap-4 items-center flex-col sm:flex-row">
-          
+          <a
             className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
             href="https://vercel.com/new"
             target="_blank"
@@ -49,7 +49,7 @@ export default function Home() {
             />
             Deploy now
           </a>
-          
+          <a
             className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
             href="https://nextjs.org/docs"
             target="_blank"
@@ -61,7 +61,7 @@ export default function Home() {
       </main>
 
       <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        
+        <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
           href="https://nextjs.org/learn"
           target="_blank"
@@ -76,7 +76,7 @@ export default function Home() {
           />
           Learn
         </a>
-        
+        <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
           href="https://vercel.com/templates"
           target="_blank"
@@ -91,7 +91,7 @@ export default function Home() {
           />
           Examples
         </a>
-        
+        <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
           href="https://nextjs.org"
           target="_blank"
