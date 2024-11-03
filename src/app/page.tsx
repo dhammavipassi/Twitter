@@ -3,14 +3,14 @@ import { Suspense } from 'react';
 import { Tweet, TweetSkeleton, EmbeddedTweet, TweetNotFound } from 'react-tweet';
 import { getTweet } from '../../../lib/tweet-cache';
 
-// Tweet 组件with缓存
-const TweetComponent = async () => {
+// Tweet 组件
+async function TweetComponent() {  // 改为函数声明式写法
   try {
-    const tweet = await getTweet("1629307668568633344") 
+    const tweet = await getTweet("1629307668568633344")
     return tweet ? <EmbeddedTweet tweet={tweet} /> : <TweetNotFound />
   } catch (error) {
     console.error(error)
-    return <TweetNotFound error={error} />
+    return <TweetNotFound error={error as Error} />
   }
 }
 
@@ -27,14 +27,12 @@ export default function Home() {
           priority
         />
         
-        {/* Tweet Component with Suspense */}
         <div className="w-full max-w-2xl">
           <Suspense fallback={<TweetSkeleton />}>
             <TweetComponent />
           </Suspense>
         </div>
 
-        {/* Documentation Links */}
         <div className="flex gap-4 items-center flex-col sm:flex-row">
           
             className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
@@ -62,7 +60,6 @@ export default function Home() {
         </div>
       </main>
 
-      {/* Footer */}
       <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
         
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
