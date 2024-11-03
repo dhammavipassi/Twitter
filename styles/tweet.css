@@ -1,0 +1,162 @@
+/* 基础主题设置 */
+.react-tweet-theme {
+  --tweet-body-font-size: 1rem;
+  --tweet-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --tweet-link-color: rgb(29, 155, 240);
+  --tweet-link-hover-color: rgb(26, 140, 216);
+  --tweet-color-primary: #0f1419;
+  --tweet-color-secondary: #536471;
+  --tweet-border-color: rgb(239, 243, 244);
+  --tweet-background-color: #ffffff;
+  --tweet-background-color-hover: rgb(247, 249, 249);
+  --tweet-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* 深色模式支持 */
+[data-theme='dark'] .react-tweet-theme,
+.dark .react-tweet-theme {
+  --tweet-color-primary: #f7f9f9;
+  --tweet-color-secondary: #8b98a5;
+  --tweet-link-color: rgb(120, 186, 240);
+  --tweet-link-hover-color: rgb(110, 170, 220);
+  --tweet-border-color: #2f3336;
+  --tweet-background-color: #15202b;
+  --tweet-background-color-hover: #1c2732;
+}
+
+/* Tweet 容器样式 */
+.react-tweet {
+  border: 1px solid var(--tweet-border-color);
+  border-radius: 12px;
+  margin: 1rem 0;
+  padding: 1rem;
+  background-color: var(--tweet-background-color);
+  transition: background-color 0.2s ease;
+  box-shadow: var(--tweet-shadow);
+}
+
+.react-tweet:hover {
+  background-color: var(--tweet-background-color-hover);
+}
+
+/* Tweet 头部样式 */
+.react-tweet-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.react-tweet-avatar {
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.react-tweet-author {
+  font-weight: 700;
+  color: var(--tweet-color-primary);
+}
+
+.react-tweet-meta {
+  color: var(--tweet-color-secondary);
+  font-size: 0.9rem;
+}
+
+/* Tweet 内容样式 */
+.react-tweet-body {
+  font-size: var(--tweet-body-font-size);
+  line-height: 1.5;
+  color: var(--tweet-color-primary);
+  margin: 0.5rem 0;
+}
+
+/* Tweet 链接样式 */
+.react-tweet-link {
+  color: var(--tweet-link-color);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.react-tweet-link:hover {
+  color: var(--tweet-link-hover-color);
+  text-decoration: underline;
+}
+
+/* Tweet 媒体内容样式 */
+.react-tweet-media {
+  margin-top: 0.5rem;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Tweet 交互按钮样式 */
+.react-tweet-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.75rem;
+  color: var(--tweet-color-secondary);
+}
+
+.react-tweet-action {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  transition: background-color 0.2s ease;
+}
+
+.react-tweet-action:hover {
+  background-color: rgba(29, 155, 240, 0.1);
+  color: var(--tweet-link-color);
+}
+
+/* Loading 状态样式 */
+.react-tweet-skeleton {
+  padding: 1rem;
+  border: 1px solid var(--tweet-border-color);
+  border-radius: 12px;
+  background-color: var(--tweet-background-color);
+}
+
+.react-tweet-skeleton-line {
+  height: 1rem;
+  background-color: var(--tweet-border-color);
+  border-radius: 4px;
+  margin: 0.5rem 0;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+/* 错误状态样式 */
+.react-tweet-error {
+  padding: 1rem;
+  border: 1px solid #ff4444;
+  border-radius: 12px;
+  background-color: rgba(255, 68, 68, 0.1);
+  color: #ff4444;
+  text-align: center;
+}
+
+/* 响应式设计 */
+@media screen and (max-width: 640px) {
+  .react-tweet {
+    margin: 0.5rem 0;
+    padding: 0.75rem;
+  }
+  
+  .react-tweet-body {
+    font-size: calc(var(--tweet-body-font-size) * 0.95);
+  }
+}

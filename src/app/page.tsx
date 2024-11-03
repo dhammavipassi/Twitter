@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Suspense } from 'react';
 import { Tweet, TweetSkeleton, EmbeddedTweet, TweetNotFound } from 'react-tweet';
 import { getTweet } from '../../../lib/tweet-cache';
+import '../styles/tweet.css'; // 导入CSS样式
 
 // Tweet 组件
 async function TweetComponent() {
