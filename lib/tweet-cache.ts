@@ -1,5 +1,5 @@
 import { fetchTweet, Tweet } from 'react-tweet/api'
-import { kv } from '@vercel/kv'
+import { get, set } from '@vercel/edge-config'
 
 export async function getTweet(
   id: string,
@@ -7,17 +7,15 @@ export async function getTweet(
 ): Promise<Tweet | undefined> {
   try {
     const { data, tombstone, notFound } = await fetchTweet(id, fetchOptions)
-
     if (data) {
-      await kv.set(`tweet:${id}`, data)
+      await set(`tweet:${id}`, data)
       return data
     } else if (tombstone || notFound) {
-      await kv.del(`tweet:${id}`)
+      await set(`tweet:${id}`, null)
     }
   } catch (error) {
     console.error('获取推文失败:', error)
   }
-
-  const cachedTweet = await kv.get<Tweet>(`tweet:${id}`)
+  const cachedTweet = await get(`tweet:${id}`)
   return cachedTweet ?? undefined
 }
